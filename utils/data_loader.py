@@ -26,5 +26,6 @@ def load_movie_titles(path_to_movies):
     """
     df = pd.read_csv(path_to_movies)
     df = df.dropna()
-    movie_list = df['title'].to_list()
+    unique_movies = df[['movieId', 'title']].drop_duplicates()
+    movie_list = unique_movies['title'].tolist()
     return movie_list
